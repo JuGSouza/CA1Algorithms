@@ -1,11 +1,11 @@
 package com.mycompany.datastructures;
 
-public class Stack {
+public class StackStorage {
     private int[] arr;
     private int top;
     private int capacity;
 
-    public Stack(int size) {
+    public StackStorage(int size) {
         arr = new int[size];
         capacity = size;
         top = -1;
