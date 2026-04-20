@@ -7,8 +7,8 @@ public class MainApp {
         sc.nextLine();
         
         System.out.print("Enter food name: ");
-        string name = sc.nextLine();
-        StackStorage stack = new StackStorage(size);
+        String name = sc.nextLine();
+        StackStorage stack = new StackStorage(10);
         
         if (!(name.equalsIgnoreCase("Burger") ||
               name.equalsIgnoreCase("Fries") ||
@@ -28,7 +28,7 @@ public class MainApp {
         return new FoodItem(name, weight, bestBeforeDate, timePlaced);
     }
     
-    public static void StackMenu(scanner sc) {
+    public static void StackMenu(Scanner sc) {
         StackStorage stack = new StackStorage(10);
         while (true) {
             System.out.println("\n--- Stack Menu ---");
@@ -70,7 +70,7 @@ public class MainApp {
                     sc.nextLine();
                     System.out.println("Enter food name to search: ");
                     String stackkSearchName = sc.nextLine();
-                    stack.search(stackSearchName);
+                    stack.search(stackkSearchName);
                     break;
                 case 6:
                     return;
@@ -102,8 +102,8 @@ public class MainApp {
                     }
                     break;
                 case 2:
-                    FoodItem RemovedQueueItem = queue.dequeue();
-                    if (RemovedQueueItem != null) {
+                    FoodItem removedQueueItem = queue.dequeue();
+                    if (removedQueueItem != null) {
                        System.out.println("Removed: " + removedQueueItem);
                     }
                     break;
@@ -119,6 +119,7 @@ public class MainApp {
                 case 5:
                     sc.nextLine();
                     System.out.println("Enter food name to search: ");
+                    String queueSearchName = sc.nextLine();
                     queue.search(queueSearchName);
                     break;
                 case 6:
@@ -155,5 +156,9 @@ public class MainApp {
                     System.out.println("Invalid choice, try again.");
             }
         }
+    }
+
+    private static void stackMenu(Scanner sc) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
