@@ -54,6 +54,7 @@ public class StackStorage {
             System.out.println("Stack is empty.");
             return;
         }
+        boolean found = false;
         for (int i = 0; i <= top; i++) {
             if (arr[i].getName().equalsIgnoreCase(name)) {
                 System.out.println("Food item found: " + arr[i]);
