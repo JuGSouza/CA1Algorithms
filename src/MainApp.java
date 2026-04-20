@@ -1,14 +1,35 @@
-package com.mycompany.datastructures;
-
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class MainApp {
 
-    public static void stackMenu(Scanner sc) {
-        System.out.print("Enter stack size: ");
-        int size = sc.nextInt();
-        Stack stack = new Stack(size);
-
+    public static FoodItem createFoodItem(Scanner sc) {
+        sc.nextLine();
+        
+        System.out.print("Enter food name: ");
+        string name = sc.nextLine();
+        StackStorage stack = new StackStorage(size);
+        
+        if (!(name.equalsIgnoreCase("Burger") ||
+              name.equalsIgnoreCase("Fries") ||
+              name.equalsIgnoreCase("Sandwich") ||
+              name.equalsIgnoreCase("Hotdog")
+              )) {
+            System.out.println("Invalid food. Choose:  burger, pizza, fries, sandwich hotdog");
+            return null;
+        }
+        System.out.println("Enter food weight (g): ");
+        double weight = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("Enter BestBefore date: ");
+        String bestBeforeDate = sc.nextLine();
+        String timePlaced = LocalDateTime.now().toString();
+        
+        return new FoodItem(name, weight, bestBeforeDate, timePlaced);
+    }
+    
+    public static void StackMenu(scanner sc) {
+        StackStorage stack = new StackStorage(10);
         while (true) {
             System.out.println("\n--- Stack Menu ---");
             System.out.println("1. Push");
@@ -21,26 +42,37 @@ public class MainApp {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter value to push: ");
-                    int val = sc.nextInt();
-                    stack.push(val);
+                    FoodItem newItem = createFoodItem(sc);
+                    if (newItem != null) {
+                      stack.push(newItem);
+                    }
                     break;
+               
                 case 2:
-                    int popped = stack.pop();
-                    if (popped != -1) {
-                        System.out.println("Popped: " + popped);
-                    }
+                    FoodItem removedStackItem = stack.pop();
+                    if (removedStackItem != null) {
+                        System.out.println("Removed " + removedStackItem);
+                     }
                     break;
+                    
                 case 3:
-                    int top = stack.peek();
-                    if (top != -1) {
-                        System.out.println("Top element: " + top);
+                    FoodItem topItem = stack.peek();
+                    if (topItem != null) {
+                        System.out.println("Top item: " + topItem);
                     }
                     break;
+                 
                 case 4:
                     stack.display();
                     break;
+                
                 case 5:
+                    sc.nextLine();
+                    System.out.println("Enter food name to search: ");
+                    String stackkSearchName = sc.nextLine();
+                    stack.search(stackSearchName);
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Invalid choice, try again.");
@@ -49,11 +81,7 @@ public class MainApp {
     }
 
     public static void queueMenu(Scanner sc) {
-        System.out.print("Enter queue size: ");
-        int size = sc.nextInt();
-        sc.nextLine();
-
-        Queue q = new Queue(size);
+        QueueStorage queue = new QueueStorage(10);
 
         while (true) {
             System.out.println("\n--- Queue Menu ---");
@@ -61,29 +89,37 @@ public class MainApp {
             System.out.println("2. Dequeue");
             System.out.println("3. Peek");
             System.out.println("4. Display Queue");
-            System.out.println("5. Size");
+            System.out.println("5. Search");
             System.out.println("6. Back to Main Menu");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
-            sc.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter item to enqueue: ");
-                    String item = sc.nextLine();
-                    q.enqueue(item);
+                    FoodItem newItem = createFoodItem(sc);
+                    if (newItem != null) {
+                        queue.enqueue(newItem);
+                    }
                     break;
                 case 2:
-                    q.dequeue();
+                    FoodItem RemovedQueueItem = queue.dequeue();
+                    if (RemovedQueueItem != null) {
+                       System.out.println("Removed: " + removedQueueItem);
+                    }
                     break;
                 case 3:
-                    q.peek();
+                    FoodItem frontItem = queue.peek();
+                    if (frontItem != null) {
+                       System.out.println("Front item: " + frontItem);
+                    }
                     break;
                 case 4:
-                    q.display();
+                    queue.display();
                     break;
                 case 5:
-                    q.size();
+                    sc.nextLine();
+                    System.out.println("Enter food name to search: ");
+                    queue.search(queueSearchName);
                     break;
                 case 6:
                     return;
