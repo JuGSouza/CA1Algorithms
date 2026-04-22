@@ -52,8 +52,8 @@ public class MainApp {
          //the options available to user choose
         while (true) {
             System.out.println("\n--- Stack Menu ---");
-            System.out.println("1. Push");
-            System.out.println("2. Pop");
+            System.out.println("1. Add");
+            System.out.println("2. Remove");
             System.out.println("3. Peek");
             System.out.println("4. Display Stack");
             System.out.println("5. Search");
@@ -120,8 +120,8 @@ public class MainApp {
 
         while (true) {
             System.out.println("\n--- Queue Menu ---");
-            System.out.println("1. Enqueue");
-            System.out.println("2. Dequeue");
+            System.out.println("1. Add");
+            System.out.println("2. Romeve");
             System.out.println("3. Peek");
             System.out.println("4. Display Queue");
             System.out.println("5. Search");
