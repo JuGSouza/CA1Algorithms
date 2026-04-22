@@ -18,12 +18,12 @@ public class MainApp {
         String name = sc.nextLine();
         StackStorage stack = new StackStorage(10);
             
-        // do not except anything apart from those words/food
-        if (!(name.equalsIgnoreCase("Burger") ||
+        // except anything apart from those words/food
+        if (name.equalsIgnoreCase("Burger") ||
               name.equalsIgnoreCase("Fries") ||
               name.equalsIgnoreCase("Sandwich") ||
               name.equalsIgnoreCase("Hotdog")
-              )) {
+              ) {
             
              // otherwise...
             System.out.println("Invalid food. Choose:  burger, pizza, fries, sandwich hotdog");
